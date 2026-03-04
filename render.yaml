@@ -1,0 +1,37 @@
+# Render 部署配置文件
+# 文档: https://render.com/docs/yaml-spec
+services:
+  # 女神节祝福卡片应用
+  - type: web
+    name: greeting-card-app
+    env: node
+    # 构建配置
+    buildCommand: cd backend && npm install
+    # 启动命令
+    startCommand: cd backend && npm start
+    # 环境变量
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+    # 健康检查
+    healthCheckPath: /api/health
+    # 自动部署
+    autoDeploy: true
+    # 区域选择（可选）
+    # region: frankfurt
+    # 资源计划（免费计划）
+    plan: free
+    # 磁盘配置
+    disk:
+      name: app-data
+      mountPath: /data
+      sizeGB: 1
+
+# 数据库配置（如果需要可以添加）
+# databases:
+#   - name: greeting-card-db
+#     databaseName: greeting_card
+#     user: greeting_card_user
+#     plan: free
