@@ -5,8 +5,20 @@ services:
   - type: web
     name: greeting-card-app
     env: node
-    # 构建配置
-    buildCommand: cd backend && npm ci --only=production
+    # 构建配置 - 修复依赖安装问题
+    buildCommand: |
+      echo "开始构建女神节祝福卡片应用..."
+      cd backend
+      echo "当前目录: $(pwd)"
+      echo "Node版本: $(node --version)"
+      echo "NPM版本: $(npm --version)"
+      echo "正在清理缓存..."
+      npm cache clean --force || true
+      echo "正在安装生产依赖..."
+      npm ci --only=production --silent
+      echo "依赖安装完成，检查express模块..."
+      ls node_modules/express || echo "警告: express模块未找到"
+      echo "构建完成!"
     # 启动命令
     startCommand: cd backend && npm start
     # 环境变量

@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
+    "prestart": "npm ci --only=production || npm install --only=production",
     "dev": "nodemon server.js",
+    "build": "npm ci --only=production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
