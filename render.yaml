@@ -6,7 +6,7 @@ services:
     name: greeting-card-app
     env: node
     # 构建配置
-    buildCommand: cd backend && npm install
+    buildCommand: cd backend && npm ci --only=production
     # 启动命令
     startCommand: cd backend && npm start
     # 环境变量
