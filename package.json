@@ -1,0 +1,36 @@
+{
+  "name": "greeting-card-app",
+  "version": "1.0.0",
+  "description": "女神节祝福卡片生成器 - 完整H5前后端应用",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "cd backend && npm start",
+    "dev": "cd backend && npm run dev",
+    "install-all": "cd backend && npm install",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "./deploy.sh",
+    "backup": "./deploy.sh backup"
+  },
+  "keywords": [
+    "greeting-card",
+    "blessing",
+    "h5",
+    "nodejs",
+    "express",
+    "女神节"
+  ],
+  "author": "Greeting Card Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/greeting-card-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/greeting-card-app/issues"
+  },
+  "homepage": "https://github.com/yourusername/greeting-card-app#readme",
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  }
+}

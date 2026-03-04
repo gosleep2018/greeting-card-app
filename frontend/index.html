@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>专属女神节祝福卡片</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+    <!-- 状态栏模拟 -->
+    <div class="status-bar">
+        <div class="status-time">13:29</div>
+        <div class="status-icons">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-half"></i>
+            <span class="battery-percent">53%</span>
+        </div>
+    </div>
+
+    <div class="container">
+        <header class="app-header">
+            <h1 class="app-title">
+                <i class="fas fa-gift"></i> Personal Greeting Cards
+            </h1>
+            <p class="app-subtitle">专属祝福卡片生成器</p>
+        </header>
+
+        <main class="main-content">
+            <div class="card-preview">
+                <div class="preview-header">
+                    <div class="preview-title">祝福卡片预览</div>
+                    <div class="preview-flower">
+                        <i class="fas fa-heart"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-sparkles"></i>
+                    </div>
+                </div>
+                <div class="preview-content">
+                    <div class="greeting-text">
+                        <span class="greeting-emoji">💐</span>
+                        <h2>嗨，<span id="preview-name">邱越</span>！</h2>
+                        <p class="greeting-message">这是为你定制的专属女神节祝福</p>
+                    </div>
+                    <div class="card-design">
+                        <div class="design-element design-1"></div>
+                        <div class="design-element design-2"></div>
+                        <div class="design-element design-3"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-section">
+                <div class="input-header">
+                    <h2>
+                        <i class="fas fa-edit"></i> 
+                        嗨，输入你的名字，领取专属女神节祝福
+                        <span class="flower-emoji">🌸</span>
+                    </h2>
+                    <p class="input-hint">输入您的名字，生成个性化祝福卡片</p>
+                </div>
+                
+                <div class="input-group">
+                    <div class="input-wrapper">
+                        <i class="fas fa-user input-icon"></i>
+                        <input 
+                            type="text" 
+                            id="nameInput" 
+                            placeholder="请输入您的姓名" 
+                            value="邱越"
+                            maxlength="20"
+                            autocomplete="off"
+                        >
+                        <button class="clear-btn" id="clearBtn" title="清空输入">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="input-tips">
+                        <i class="fas fa-lightbulb"></i>
+                        提示：中文名字效果最佳，支持2-10个字符
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn btn-primary" id="generateBtn">
+                        <i class="fas fa-unlock-alt"></i> 解锁贺卡
+                    </button>
+                    <button class="btn btn-secondary" id="resetBtn">
+                        <i class="fas fa-redo"></i> 清空
+                    </button>
+                </div>
+
+                <div class="usage-tips">
+                    <h3><i class="fas fa-info-circle"></i> 使用小贴士</h3>
+                    <ul>
+                        <li>输入名字后点击"解锁贺卡"生成专属祝福</li>
+                        <li>生成的卡片可以保存分享给朋友</li>
+                        <li>支持多次生成不同名字的祝福卡片</li>
+                        <li>移动端适配，随时随地生成祝福</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 生成的卡片结果区域 -->
+            <div class="result-section" id="resultSection" style="display: none;">
+                <div class="result-card">
+                    <div class="result-header">
+                        <h3><i class="fas fa-check-circle"></i> 祝福卡片已生成！</h3>
+                        <button class="close-result" id="closeResult">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="result-content">
+                        <div class="generated-card" id="generatedCard">
+                            <!-- 动态生成的卡片内容 -->
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn btn-download" id="downloadBtn">
+                                <i class="fas fa-download"></i> 下载图片
+                            </button>
+                            <button class="btn btn-share" id="shareBtn">
+                                <i class="fas fa-share-alt"></i> 分享祝福
+                            </button>
+                            <button class="btn btn-copy" id="copyBtn">
+                                <i class="fas fa-copy"></i> 复制链接
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="app-footer">
+            <p>© 2026 女神节祝福卡片生成器 | 让每一份祝福都独一无二</p>
+            <div class="footer-links">
+                <a href="#"><i class="fab fa-github"></i> GitHub</a>
+                <a href="#"><i class="fas fa-question-circle"></i> 帮助</a>
+                <a href="#"><i class="fas fa-envelope"></i> 反馈</a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- 加载动画 -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p>正在生成专属祝福卡片...</p>
+        </div>
+    </div>
+
+    <!-- 通知提示 -->
+    <div class="notification" id="notification"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
